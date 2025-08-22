@@ -1,0 +1,583 @@
+// Eu nao sei se esse codigo vai funcionar com copy/pasta no netbeans (provavelmente nao) porem toda a via é para ver a logica do codigo  
+package com.mycompany.calculadora;
+
+import net.objecthunter.exp4j.Expression; //essas duas bibliotecas sao exenciais para o funcionamento do cogido, basicamente é ela que permite trasformar a string em uma operacao logica e executala.
+import net.objecthunter.exp4j.ExpressionBuilder;
+
+public class interfac extends javax.swing.JFrame {
+   String entrada = ""; // essa é a unica variavel declarada no cogido, tudo modifica ela, os valores inseridos e removidos sao instrucoes para ela como "30*4/2" que nao é uma operacao, mas um texto, as bibliotecas acima junto com a funcao calcularResultado 
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(interfac.class.getName());
+
+
+    public interfac() {
+        initComponents();
+        setResizable(false);
+    }
+
+
+    @SuppressWarnings("unchecked")
+           
+    private void initComponents() {
+
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButtonFechaparentes = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        botaomais = new javax.swing.JButton();
+        jButtonremover = new javax.swing.JButton();
+        jButtonmenos = new javax.swing.JButton();
+        jButtonMULTIPLICACAO = new javax.swing.JButton();
+        jButtonDIVISAO = new javax.swing.JButton();
+        jButtonVIRGULA = new javax.swing.JButton();
+        jButtonigual = new javax.swing.JButton();
+        saida = new javax.swing.JLabel();
+        jButtonRESET = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jButtonABREparentes = new javax.swing.JButton();
+        jButton0 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        jButton1.setText("1");
+        jButton1.setBorderPainted(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Arial", 0, 48)); 
+        jButton2.setText("2");
+        jButton2.setBorderPainted(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Arial", 0, 48));
+        jButton3.setText("3");
+        jButton3.setBorderPainted(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        jButton4.setFont(new java.awt.Font("Arial", 0, 48));
+        jButton4.setText("4");
+        jButton4.setBorderPainted(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
+        jButton5.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        jButton5.setText("5");
+        jButton5.setBorderPainted(false);
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        jButton6.setFont(new java.awt.Font("Arial", 0, 48)); 
+        jButton6.setText("6");
+        jButton6.setBorderPainted(false);
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        jButton7.setFont(new java.awt.Font("Arial", 0, 48));
+        jButton7.setText("7");
+        jButton7.setBorderPainted(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        jButton8.setFont(new java.awt.Font("Arial", 0, 48));
+        jButton8.setText("8");
+        jButton8.setBorderPainted(false);
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
+        jButton9.setFont(new java.awt.Font("Arial", 0, 48)); 
+        jButton9.setText("9");
+        jButton9.setBorderPainted(false);
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+
+        jButtonFechaparentes.setFont(new java.awt.Font("Arial", 0, 48));
+        jButtonFechaparentes.setText(")");
+        jButtonFechaparentes.setBorderPainted(false);
+        jButtonFechaparentes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonFechaparentes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonFechaparentesMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("0");
+        jLabel1.setToolTipText("");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        botaomais.setFont(new java.awt.Font("Arial", 0, 48)); 
+        botaomais.setText("+");
+        botaomais.setBorderPainted(false);
+        botaomais.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botaomais.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaomaisMouseClicked(evt);
+            }
+        });
+
+        jButtonremover.setText("⌫");
+        jButtonremover.setBorderPainted(false);
+        jButtonremover.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonremover.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonremoverMouseClicked(evt);
+            }
+        });
+        jButtonremover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonremoverActionPerformed(evt);
+            }
+        });
+
+        jButtonmenos.setFont(new java.awt.Font("Arial", 0, 48));
+        jButtonmenos.setText("-");
+        jButtonmenos.setBorderPainted(false);
+        jButtonmenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonmenos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonmenosMouseClicked(evt);
+            }
+        });
+
+        jButtonMULTIPLICACAO.setFont(new java.awt.Font("Arial", 0, 48)); 
+        jButtonMULTIPLICACAO.setText("×");
+        jButtonMULTIPLICACAO.setBorder(null);
+        jButtonMULTIPLICACAO.setBorderPainted(false);
+        jButtonMULTIPLICACAO.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMULTIPLICACAO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonMULTIPLICACAOMouseClicked(evt);
+            }
+        });
+        jButtonMULTIPLICACAO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMULTIPLICACAOActionPerformed(evt);
+            }
+        });
+
+        jButtonDIVISAO.setFont(new java.awt.Font("Arial", 0, 48));
+        jButtonDIVISAO.setText("÷");
+        jButtonDIVISAO.setBorderPainted(false);
+        jButtonDIVISAO.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDIVISAO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonDIVISAOMouseClicked(evt);
+            }
+        });
+
+        jButtonVIRGULA.setFont(new java.awt.Font("Arial", 0, 48));
+        jButtonVIRGULA.setText(",");
+        jButtonVIRGULA.setBorderPainted(false);
+        jButtonVIRGULA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonVIRGULA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonVIRGULAMouseClicked(evt);
+            }
+        });
+
+        jButtonigual.setFont(new java.awt.Font("Arial", 0, 48));
+        jButtonigual.setText("=");
+        jButtonigual.setBorderPainted(false);
+        jButtonigual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonigual.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonigualMouseClicked(evt);
+            }
+        });
+        jButtonigual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonigualActionPerformed(evt);
+            }
+        });
+
+        saida.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        saida.setText("0");
+
+        jButtonRESET.setFont(new java.awt.Font("Arial", 0, 18)); 
+        jButtonRESET.setText("RESET");
+        jButtonRESET.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRESETMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setText("Calculadora");
+
+        jButtonABREparentes.setFont(new java.awt.Font("Arial", 0, 48));
+        jButtonABREparentes.setText("(");
+        jButtonABREparentes.setBorderPainted(false);
+        jButtonABREparentes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonABREparentes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonABREparentesMouseClicked(evt);
+            }
+        });
+
+        jButton0.setFont(new java.awt.Font("Arial", 0, 48));
+        jButton0.setText("0");
+        jButton0.setBorderPainted(false);
+        jButton0.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton0.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton0MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(saida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButtonMULTIPLICACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(1, 1, 1)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButtonDIVISAO, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(1, 1, 1)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButtonVIRGULA, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(1, 1, 1)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButton0, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(1, 1, 1)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jButtonFechaparentes, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jButtonABREparentes, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botaomais, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonigual, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonmenos, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonRESET, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonremover, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(1, 1, 1))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(saida))
+                    .addComponent(jButtonRESET, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonremover, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButtonDIVISAO, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonVIRGULA, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonMULTIPLICACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonmenos, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaomais, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonABREparentes, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton0, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonFechaparentes, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButtonigual, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {                                      
+    if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += "1";
+     jLabel1.setText(entrada);
+}
+    }                                     
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += "2";
+     jLabel1.setText(entrada);
+}
+    }                                     
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += "3";
+     jLabel1.setText(entrada);
+}
+    }                                     
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += "4";
+     jLabel1.setText(entrada);
+}
+    }                                     
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += "5";
+     jLabel1.setText(entrada);
+}
+    }                                     
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {                                      
+            if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += "6";
+     jLabel1.setText(entrada);
+    }                                     
+}
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {                                      
+    if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += "7";
+     jLabel1.setText(entrada);
+    }                                     
+}
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {                                      
+    if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += "8";
+     jLabel1.setText(entrada);
+    }                                     
+}
+    private void jButtonFechaparentesMouseClicked(java.awt.event.MouseEvent evt) {                                                  
+    if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += ")";
+     jLabel1.setText(entrada);                    
+    }                                                 
+ } 
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {                                      
+    if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += "9";
+     jLabel1.setText(entrada); 
+    }                                     
+ }
+    private void botaomaisMouseClicked(java.awt.event.MouseEvent evt) {                                       
+     if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += "+";
+     jLabel1.setText(entrada); 
+    }                                      
+}  
+    private void jButtonremoverMouseClicked(java.awt.event.MouseEvent evt) {                                            
+     if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    if (!entrada.isEmpty()) {            
+            entrada = entrada.substring(0, entrada.length() - 1);
+     jLabel1.setText(entrada); 
+    }                                           
+    }  
+    }                                           
+                                         
+    private void jButtonmenosMouseClicked(java.awt.event.MouseEvent evt) {                                          
+     if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+        entrada += "-";
+            jLabel1.setText(entrada); 
+    }                                         
+}
+    private void jButtonMULTIPLICACAOMouseClicked(java.awt.event.MouseEvent evt) {                                                  
+     if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+        entrada += "*";
+            jLabel1.setText(entrada); 
+    }   
+    }                                                 
+
+    private void jButtonDIVISAOMouseClicked(java.awt.event.MouseEvent evt) {                                            
+     if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+        entrada += "/";
+            jLabel1.setText(entrada); 
+    }   
+    }                                           
+
+    private void jButtonVIRGULAMouseClicked(java.awt.event.MouseEvent evt) {                                            
+     if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+        entrada += ".";
+            jLabel1.setText(entrada); 
+    }   
+    }                                           
+
+    private void jButtonigualMouseClicked(java.awt.event.MouseEvent evt) {                                          
+    if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+            calcularResultado();
+        }
+    }                                         
+
+    private void jButtonigualActionPerformed(java.awt.event.ActionEvent evt) {                                             
+       
+    }                                            
+
+    private void jButtonRESETMouseClicked(java.awt.event.MouseEvent evt) {                                          
+     if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+        entrada = "";
+        entrada = "";
+            jLabel1.setText(entrada); 
+            saida.setText(entrada); 
+    }  
+    }                                         
+
+    private void jButtonABREparentesMouseClicked(java.awt.event.MouseEvent evt) {                                                 
+     if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+        entrada += "(";
+            jLabel1.setText(entrada); 
+    } 
+    }                                                
+
+    private void jButton0MouseClicked(java.awt.event.MouseEvent evt) {                                      
+    if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+    entrada += "0";
+     jLabel1.setText(entrada);                    
+    }          
+    }                                     
+
+    private void jButtonMULTIPLICACAOActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+
+    }                                                    
+
+    private void jButtonremoverActionPerformed(java.awt.event.ActionEvent evt) {                                               
+     
+    }                                              
+     
+
+    public static void main(String args[]) {
+   
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+       
+        java.awt.EventQueue.invokeLater(() -> new interfac().setVisible(true));
+    }
+
+
+private void calcularResultado() { // essa é a funcao que faz a transformacao da string para uma operacao logica e a executa, tambem tem um tratamento de erro para casos que sao impossiveis de calcular como divisao por 0
+    try {
+        Expression e = new ExpressionBuilder(entrada).build();
+        double resultado = e.evaluate();
+        entrada = Double.toString(resultado);
+        saida.setText(entrada);
+    } catch (Exception ex) {
+        saida.setText("Sintaxe Erro");
+    }
+}
+                  
+    private javax.swing.JButton botaomais;
+    private javax.swing.JButton jButton0;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonABREparentes;
+    private javax.swing.JButton jButtonDIVISAO;
+    private javax.swing.JButton jButtonFechaparentes;
+    private javax.swing.JButton jButtonMULTIPLICACAO;
+    private javax.swing.JButton jButtonRESET;
+    private javax.swing.JButton jButtonVIRGULA;
+    private javax.swing.JButton jButtonigual;
+    private javax.swing.JButton jButtonmenos;
+    private javax.swing.JButton jButtonremover;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel saida;
+                  
+}
